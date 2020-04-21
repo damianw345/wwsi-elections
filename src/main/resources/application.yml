@@ -1,1 +1,9 @@
+spring:
+  datasource:
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    url: ${DB_URL}
+    username: ${USERNAME}
+    password: ${PASSWORD}
 
+mybatis:
+  mapper-locations: "classpath:electionsProcedures.xml"

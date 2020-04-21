@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.github.damianw345.elections.repository.ElectionsRepository">
+
+    <select id="findCandidates" statementType="CALLABLE" resultType="com.github.damianw345.elections.model.Candidate">
+        exec Wybory.p_Kandydaci #{termId}, #{electionAreaId}, #{committeeId}
+    </select>
+
+    <select id="findCommittees" statementType="CALLABLE" resultType="com.github.damianw345.elections.model.Committee">
+        exec Wybory.p_komitety #{termId}, #{electionAreaId}
+    </select>
+
+    <select id="findAuthenticationMethods" statementType="CALLABLE"
+            resultType="com.github.damianw345.elections.model.AuthenticationMethod">
+        exec Wybory.p_MechanizmyUwierzetelnienia
+    </select>
+
+    <select id="findElectionAreas" statementType="CALLABLE"
+            resultType="com.github.damianw345.elections.model.ElectionArea">
+        exec Wybory.p_Okregi #{termId}
+    </select>
+
+    <select id="findElectionAreaServers" statementType="CALLABLE"
+            resultType="com.github.damianw345.elections.model.ElectionAreaServer">
+        exec Wybory.p_OkregiSerwery #{electionAreaId}
+    </select>
+
+    <select id="findElectionAreasWithDetails" statementType="CALLABLE"
+            resultType="com.github.damianw345.elections.model.ElectionAreaDetails">
+        exec Wybory.p_OkregiWyborcze 1
+    </select>
+
+    <select id="findElectionTerms" statementType="CALLABLE"
+            resultType="com.github.damianw345.elections.model.ElectionTerm">
+        exec Wybory.p_Termin
+    </select>
+
+</mapper>

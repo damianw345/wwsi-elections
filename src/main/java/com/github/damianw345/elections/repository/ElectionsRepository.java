@@ -22,4 +22,7 @@ public interface ElectionsRepository {
 
     List<ElectionTerm> findElectionTerms();
 
+    String login(String login, String password);
+
+    String register(String login, String password);
 }

@@ -35,4 +35,22 @@
         exec Wybory.p_Termin
     </select>
 
+    <select id="login" statementType="CALLABLE" resultType="string">
+        <![CDATA[
+
+                        declare @password BINARY(32) = (SELECT CONVERT(BINARY(32), #{password}, 2))
+                        exec WyboryLogowanie.p_LogowanieUdajeEPUAP  #{login}, @password
+
+        ]]>
+    </select>
+
+    <select id="register" statementType="CALLABLE" resultType="string">
+        <![CDATA[
+
+                        declare @password BINARY(32) = (SELECT CONVERT(BINARY(32), #{password}, 2))
+                        exec WyboryLogowanie.p_tworzenieKontaUdajeEPUAP #{login}, @password
+
+        ]]>
+    </select>
+
 </mapper>

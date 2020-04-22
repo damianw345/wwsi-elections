@@ -5,5 +5,15 @@ spring:
     username: ${USERNAME}
     password: ${PASSWORD}
 
+logging:
+  level:
+    org:
+      springframework:
+        security: DEBUG
+
 mybatis:
   mapper-locations: "classpath:electionsProcedures.xml"
+
+server:
+  servlet:
+    context-path: /api

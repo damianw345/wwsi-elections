@@ -37,7 +37,7 @@ public class BackendAuthenticatorFilter extends OncePerRequestFilter {
                     .map(token -> token.split(":"))
                     .map(credentials -> new UserDto(credentials[0], credentials[1]))
                     .ifPresent(userDto -> {
-                        var login = userDto.getUsername();
+                        var login = userDto.getLogin();
                         var pwd = userDto.getPassword();
 
                         if (electionsRepository.login(login, ShaUtil.hash(pwd)).equalsIgnoreCase(SUCCESSFUL_LOGIN)) {

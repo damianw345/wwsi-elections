@@ -8,9 +8,12 @@ import java.util.List;
 @Mapper
 public interface ElectionsRepository {
 
-    List<Candidate> findCandidates(Integer termId, Integer electionAreaId, Integer committeeId);
+    List<Candidate> findCandidates(Integer termId,
+                                   Integer electionAreaId,
+                                   Integer committeeId);
 
-    List<Committee> findCommittees(Integer termId, Integer electionAreaId);
+    List<Committee> findCommittees(Integer termId,
+                                   Integer electionAreaId);
 
     List<AuthenticationMethod> findAuthenticationMethods();
 
@@ -25,4 +28,15 @@ public interface ElectionsRepository {
     String login(String login, String password);
 
     String register(String login, String password);
+
+    String registerToOnlineVoting(String login,
+                                  String password,
+                                  Integer electionAreaId);
+
+    String voteOnline(Integer candidateId,
+                      Integer electionTermId,
+                      Integer electionAreaId,
+                      String login,
+                      String password,
+                      Integer authMethodId);
 }

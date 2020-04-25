@@ -53,4 +53,18 @@
         ]]>
     </select>
 
+    <select id="registerToOnlineVoting" statementType="CALLABLE" resultType="string">
+        <![CDATA[
+            declare @password BINARY(32) = (SELECT CONVERT(BINARY(32), #{password} , 2))
+            exec Wybory.p_GlosujeOnline #{login}, @password, #{electionAreaId}
+        ]]>
+    </select>
+
+    <select id="voteOnline" statementType="CALLABLE" resultType="string">
+        <![CDATA[
+            declare @password BINARY(32) = (SELECT CONVERT(BINARY(32), #{password} , 2))
+            exec Wybory.p_glosuj #{candidateId}, #{electionTermId}, #{electionAreaId}, #{login}, @password, #{authMethodId}
+        ]]>
+    </select>
+
 </mapper>

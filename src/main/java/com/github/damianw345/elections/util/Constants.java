@@ -9,4 +9,6 @@ public class Constants {
     // DBAs rejected to pass login and password to the application layer, so this is kind of workaround, as they return only this string
     // when authentication is successful
     public static final String SUCCESSFUL_LOGIN = "sukces logowania";
+
+    public static final String AUTH_TOKEN = "Authorization";
 }

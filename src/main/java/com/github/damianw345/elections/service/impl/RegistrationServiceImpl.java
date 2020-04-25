@@ -22,7 +22,7 @@ public class RegistrationServiceImpl implements RegistrationService {
         log.info("Trying to register user: {}", userDto.getLogin());
         String result = electionsRepository.register(userDto.getLogin(), ShaUtil.hash(userDto.getPassword()));
         if (!result.contains("utworzone")) {
-            throw new AppRuntimeException(AppExceptionCode.E001);
+            throw new AppRuntimeException(AppExceptionCode.E002);
         }
     }
 }

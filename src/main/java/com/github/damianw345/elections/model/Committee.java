@@ -6,7 +6,7 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class Committee {
-    private String KomitetNr;
+    private int KomitetNr;
     private String KomitetNazwa;
-    private Integer LiczbaKandydatów;
+    private int LiczbaKandydatów;
 }

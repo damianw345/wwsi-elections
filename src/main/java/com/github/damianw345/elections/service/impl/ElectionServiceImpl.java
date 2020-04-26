@@ -1,10 +1,10 @@
 package com.github.damianw345.elections.service.impl;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
+import com.github.damianw345.elections.dto.CandidateDto;
+import com.github.damianw345.elections.dto.CommitteeDto;
 import com.github.damianw345.elections.dto.ElectionAreaDto;
 import com.github.damianw345.elections.dto.ElectionTermDto;
 import com.github.damianw345.elections.dto.UserDto;
-import com.github.damianw345.elections.model.area.ElectionAreaDetails;
 import com.github.damianw345.elections.repository.ElectionsRepository;
 import com.github.damianw345.elections.service.ElectionService;
 import lombok.RequiredArgsConstructor;
@@ -42,6 +42,22 @@ public class ElectionServiceImpl implements ElectionService {
         return electionsRepository.findElectionAreasWithDetails()
                 .stream()
                 .map(ElectionAreaDto::of)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<CommitteeDto> findCommittees(int electionTermId, int electionAreaId) {
+        return electionsRepository.findCommittees(electionTermId, electionAreaId)
+                .stream()
+                .map(CommitteeDto::of)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<CandidateDto> findCandidates(int electionTermId, int electionAreaId, int committeeId) {
+        return electionsRepository.findCandidates(electionTermId, electionAreaId, committeeId)
+                .stream()
+                .map(CandidateDto::of)
                 .collect(Collectors.toList());
     }
 }

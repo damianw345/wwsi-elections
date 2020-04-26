@@ -1,5 +1,7 @@
 package com.github.damianw345.elections.service;
 
+import com.github.damianw345.elections.dto.CandidateDto;
+import com.github.damianw345.elections.dto.CommitteeDto;
 import com.github.damianw345.elections.dto.ElectionAreaDto;
 import com.github.damianw345.elections.dto.ElectionTermDto;
 import com.github.damianw345.elections.dto.UserDto;
@@ -14,4 +16,7 @@ public interface ElectionService {
 
     List<ElectionAreaDto> findElectionAreas();
 
+    List<CommitteeDto> findCommittees(int electionTermId, int electionAreaId);
+
+    List<CandidateDto> findCandidates(int electionTermId, int electionAreaId, int committeeId);
 }

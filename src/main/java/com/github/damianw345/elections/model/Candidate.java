@@ -9,7 +9,7 @@ public class Candidate {
 
     private String OkregWyborczy;
     private String KomitetNazwa;
-    private Integer KandydatID;
+    private int KandydatID;
     private String ImieNazwiskoKandydata;
     private String PartiaPoparcie;
 }

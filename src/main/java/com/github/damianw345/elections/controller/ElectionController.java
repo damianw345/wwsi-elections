@@ -26,9 +26,9 @@ public class ElectionController {
     private final ElectionService electionService;
 
     @GetMapping("/election-area/{electionAreaId}/register")
-    public void registerToOnlineVoting(@RequestHeader(name = AUTH_TOKEN) String token,
-                                       @PathVariable("electionAreaId") Integer electionAreaId) {
-        electionService.registerToOnlineVoting(buildUserDto(token), electionAreaId);
+    public String registerToOnlineVoting(@RequestHeader(name = AUTH_TOKEN) String token,
+                                         @PathVariable("electionAreaId") Integer electionAreaId) {
+        return electionService.registerToOnlineVoting(buildUserDto(token), electionAreaId);
     }
 
     @GetMapping("/terms")

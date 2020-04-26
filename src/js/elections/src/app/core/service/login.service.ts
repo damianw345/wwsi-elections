@@ -19,10 +19,10 @@ export class LoginService {
 
   login(loginData: LoginData): void {
 
-    let token = `${loginData.login}:${loginData.password}`;
+    let token = btoa(`${loginData.login}:${loginData.password}`);
 
     this.loginHttpService
-      .login(btoa(token))
+      .login(token)
       .subscribe(_ => {
         this.authService.setTokenInStorage(token);
         this.currentUserSub.next(loginData);

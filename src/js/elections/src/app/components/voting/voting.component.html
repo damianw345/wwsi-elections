@@ -1,3 +1,55 @@
-<p>
-  voting works!
-</p>
+<mat-horizontal-stepper #stepper [linear]="true">
+
+  <mat-step [stepControl]="electionAreaFormGroup">
+    <form [formGroup]="electionAreaFormGroup">
+      <ng-template matStepLabel>Rejestracja w okręgu wyborczym</ng-template>
+
+      <div class="row">
+        <div class="col">
+          <i>Wskazówka: w przypadku wyborów prezydenckich wybierz okręg Polska</i>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <mat-form-field>
+            <mat-select formControlName="electionArea" placeholder="Okręg wyborczy">
+              <mat-option *ngFor="let electionArea of electionAreas"
+                          [value]="electionArea">{{electionArea.electionArea}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <button (click)="registerToOnlineVotingInArea()" mat-raised-button>Zarejestruj i przejdź dalej</button>
+      </div>
+
+    </form>
+  </mat-step>
+
+  <mat-step [stepControl]="secondFormGroup">
+    <form [formGroup]="secondFormGroup">
+      <ng-template matStepLabel>Wybór kandydata</ng-template>
+      <mat-form-field>
+        <mat-label>Address</mat-label>
+        <input formControlName="secondCtrl" matInput placeholder="Ex. 1 Main St, New York, NY"
+               required>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious>Wstecz</button>
+        <button mat-button matStepperNext>Dalej</button>
+      </div>
+    </form>
+  </mat-step>
+
+  <mat-step>
+    <ng-template matStepLabel>Podsumowanie</ng-template>
+    <p>You are now done.</p>
+    <div>
+      <button mat-button matStepperPrevious>Back</button>
+      <button (click)="stepper.reset()" mat-button>Reset</button>
+    </div>
+  </mat-step>
+
+</mat-horizontal-stepper>

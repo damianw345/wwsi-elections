@@ -1,0 +1,35 @@
+<mat-card-title>
+  <article class="row">
+    <div class="col-12 text-center">
+      Formularz logowania
+    </div>
+  </article>
+</mat-card-title>
+<mat-card-content *ngIf="loginForm">
+  <form (ngSubmit)="onSubmit(loginForm)" [formGroup]="loginForm">
+    <article class="row justify-content-center">
+      <div class="col-xl-3 col-lg-4 col-sm-6">
+        <mat-form-field>
+          <input matInput placeholder="Login" formControlName="login"/>
+        </mat-form-field>
+      </div>
+    </article>
+    <article class="row justify-content-center">
+      <div class="col-xl-3 col-lg-4 col-sm-6">
+        <mat-form-field>
+          <input matInput placeholder="Hasło" type="password" formControlName="password"/>
+        </mat-form-field>
+      </div>
+    </article>
+    <div class="row justify-content-center pt-2">
+      <div class=" col-lg-2 col-md-3 col-sm-3">
+        <button [disabled]="loginForm.invalid"
+                class="w-100 p-0 mb-2"
+                mat-raised-button
+                (click)="login()">
+          Zaloguj
+        </button>
+      </div>
+    </div>
+  </form>
+</mat-card-content>

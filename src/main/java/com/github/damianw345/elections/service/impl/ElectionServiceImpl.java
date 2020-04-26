@@ -1,8 +1,10 @@
 package com.github.damianw345.elections.service.impl;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.github.damianw345.elections.dto.ElectionAreaDto;
 import com.github.damianw345.elections.dto.ElectionTermDto;
 import com.github.damianw345.elections.dto.UserDto;
-import com.github.damianw345.elections.model.ElectionTerm;
+import com.github.damianw345.elections.model.area.ElectionAreaDetails;
 import com.github.damianw345.elections.repository.ElectionsRepository;
 import com.github.damianw345.elections.service.ElectionService;
 import lombok.RequiredArgsConstructor;
@@ -32,6 +34,14 @@ public class ElectionServiceImpl implements ElectionService {
                 .findElectionTerms()
                 .stream()
                 .map(ElectionTermDto::of)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<ElectionAreaDto> findElectionAreas() {
+        return electionsRepository.findElectionAreasWithDetails()
+                .stream()
+                .map(ElectionAreaDto::of)
                 .collect(Collectors.toList());
     }
 }

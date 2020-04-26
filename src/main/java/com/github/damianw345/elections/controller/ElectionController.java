@@ -1,5 +1,6 @@
 package com.github.damianw345.elections.controller;
 
+import com.github.damianw345.elections.dto.ElectionAreaDto;
 import com.github.damianw345.elections.dto.ElectionTermDto;
 import com.github.damianw345.elections.service.ElectionService;
 import lombok.RequiredArgsConstructor;
@@ -30,5 +31,10 @@ public class ElectionController {
     @GetMapping("/terms")
     public List<ElectionTermDto> listElectionTerms() {
         return electionService.findElectionTerms();
+    }
+
+    @GetMapping("/areas")
+    public List<ElectionAreaDto> listElectionAreas() {
+        return electionService.findElectionAreas();
     }
 }

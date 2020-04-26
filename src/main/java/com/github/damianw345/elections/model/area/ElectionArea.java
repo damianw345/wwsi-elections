@@ -1,4 +1,4 @@
-package com.github.damianw345.elections.model;
+package com.github.damianw345.elections.model.area;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

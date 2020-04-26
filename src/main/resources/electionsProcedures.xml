@@ -16,7 +16,7 @@
     </select>
 
     <select id="findElectionAreas" statementType="CALLABLE"
-            resultType="com.github.damianw345.elections.model.ElectionArea">
+            resultType="com.github.damianw345.elections.model.area.ElectionArea">
         exec Wybory.p_Okregi #{termId}
     </select>
 
@@ -26,7 +26,7 @@
     </select>
 
     <select id="findElectionAreasWithDetails" statementType="CALLABLE"
-            resultType="com.github.damianw345.elections.model.ElectionAreaDetails">
+            resultType="com.github.damianw345.elections.model.area.ElectionAreaDetails">
         exec Wybory.p_OkregiWyborcze 1
     </select>
 

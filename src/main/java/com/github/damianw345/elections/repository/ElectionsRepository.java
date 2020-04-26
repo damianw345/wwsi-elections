@@ -1,6 +1,8 @@
 package com.github.damianw345.elections.repository;
 
 import com.github.damianw345.elections.model.*;
+import com.github.damianw345.elections.model.area.ElectionArea;
+import com.github.damianw345.elections.model.area.ElectionAreaDetails;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;

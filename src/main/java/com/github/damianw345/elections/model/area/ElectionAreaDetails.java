@@ -1,4 +1,4 @@
-package com.github.damianw345.elections.model;
+package com.github.damianw345.elections.model.area;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,7 +7,7 @@ import lombok.Data;
 @AllArgsConstructor
 public class ElectionAreaDetails {
 
-    private String OkregWyborczyID;
+    private int OkregWyborczyID;
     private String OkregWyborczy;
     private String Obszar;
     private String Opis;

@@ -1,12 +1,12 @@
 <mat-card-title>
   <article class="row">
     <div class="col-12 text-center">
-      Formularz logowania
+      Zaloguj się lub utwórz nowe konto
     </div>
   </article>
 </mat-card-title>
 <mat-card-content *ngIf="loginForm">
-  <form (ngSubmit)="onSubmit(loginForm)" [formGroup]="loginForm">
+  <form [formGroup]="loginForm">
     <article class="row justify-content-center">
       <div class="col-xl-3 col-lg-4 col-sm-6">
         <mat-form-field>
@@ -28,6 +28,13 @@
                 mat-raised-button
                 (click)="login()">
           Zaloguj
+        </button>
+
+        <button (click)="register()"
+                [disabled]="loginForm.invalid"
+                class="w-100 p-0 mb-2"
+                mat-raised-button>
+          Zarejestruj
         </button>
       </div>
     </div>

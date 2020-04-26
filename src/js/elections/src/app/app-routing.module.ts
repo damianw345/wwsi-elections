@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
+import { VotingComponent } from './components/voting/voting.component';
 
 const routes: Routes = [
 
@@ -9,7 +10,11 @@ const routes: Routes = [
     pathMatch: 'full',
     component: LoginComponent
   },
-
+  {
+    path: 'voting',
+    pathMatch: 'full',
+    component: VotingComponent
+  },
 ];
 
 @NgModule({

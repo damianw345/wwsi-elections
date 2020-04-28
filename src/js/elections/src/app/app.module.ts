@@ -16,6 +16,11 @@ import { CommonModule } from '@angular/common';
 import { MessageDialogComponent } from './components/message-dialog/message-dialog.component';
 import { MatIconModule } from '@angular/material/icon';
 import { TokenInterceptor } from './core/http/token-interceptor';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSortModule } from '@angular/material/sort';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatTableModule } from '@angular/material/table';
+import { MatInputModule } from '@angular/material/input';
 
 
 @NgModule({
@@ -36,6 +41,11 @@ import { TokenInterceptor } from './core/http/token-interceptor';
     MatSelectModule,
     MatDialogModule,
     MatIconModule,
+    MatInputModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatProgressSpinnerModule,
     CommonModule
   ],
   entryComponents: [MessageDialogComponent],

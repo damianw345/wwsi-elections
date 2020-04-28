@@ -19,9 +19,9 @@ public class VoteController {
 
     private final VoteService voteService;
 
-    @PostMapping("/")
-    public void voteOnline(@RequestHeader(name = AUTH_TOKEN) String token,
-                           @RequestBody VoteDto voteDto) {
-        voteService.voteOnline(buildUserDto(token), voteDto);
+    @PostMapping
+    public String voteOnline(@RequestHeader(name = AUTH_TOKEN) String token,
+                             @RequestBody VoteDto voteDto) {
+        return voteService.voteOnline(buildUserDto(token), voteDto);
     }
 }

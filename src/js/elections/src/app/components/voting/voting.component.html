@@ -28,27 +28,70 @@
     </form>
   </mat-step>
 
-  <mat-step [stepControl]="secondFormGroup">
-    <form [formGroup]="secondFormGroup">
-      <ng-template matStepLabel>Wybór kandydata</ng-template>
-      <mat-form-field>
-        <mat-label>Address</mat-label>
-        <input formControlName="secondCtrl" matInput placeholder="Ex. 1 Main St, New York, NY"
-               required>
-      </mat-form-field>
+  <mat-step [stepControl]="candidateFormGroup">
+    <ng-template matStepLabel>Wybór kandydata</ng-template>
+
+    <form [formGroup]="candidateFormGroup">
+
       <div>
         <button mat-button matStepperPrevious>Wstecz</button>
         <button mat-button matStepperNext>Dalej</button>
       </div>
+
+      <mat-form-field class="table">
+        <table [dataSource]="dataSource" class="mat-elevation-z8" mat-table>
+
+          <ng-container matColumnDef="id">
+            <th *matHeaderCellDef mat-header-cell>Numer</th>
+            <td *matCellDef="let candidate" mat-cell> {{candidate.candidateId}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="electionArea">
+            <th *matHeaderCellDef mat-header-cell> Obszar wyborczy</th>
+            <td *matCellDef="let candidate" mat-cell> {{candidate.electionArea}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="committee">
+            <th *matHeaderCellDef mat-header-cell> Komitet</th>
+            <td *matCellDef="let candidate" mat-cell> {{candidate.committeeName}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="candidate">
+            <th *matHeaderCellDef mat-header-cell> Kandydat</th>
+            <td *matCellDef="let candidate" mat-cell> {{candidate.candidateNameSurname}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="party">
+            <th *matHeaderCellDef mat-header-cell> Partia</th>
+            <td *matCellDef="let candidate" mat-cell> {{candidate.supportingParty}} </td>
+          </ng-container>
+
+          <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
+          <tr (click)="selection.toggle(row)"
+              (click)="chooseCandidate(row)"
+              (mouseout)="row.hovered = false"
+              (mouseover)="row.hovered = true"
+              *matRowDef="let row; columns: displayedColumns;"
+              [ngClass]="{hovered: row.hovered, highlighted: selection.isSelected(row)}"
+              mat-row>
+          </tr>
+        </table>
+
+        <input formControlName="candidateId" hidden matInput>
+
+      </mat-form-field>
     </form>
   </mat-step>
 
   <mat-step>
     <ng-template matStepLabel>Podsumowanie</ng-template>
-    <p>You are now done.</p>
+    <ng-container *ngIf="(candidateFormGroup.valueChanges | async) as candidateValue">
+      <p>Czy na pewno chcesz oddać głos na {{candidateValue.candidateName}} ?</p>
+    </ng-container>
+
     <div>
-      <button mat-button matStepperPrevious>Back</button>
-      <button (click)="stepper.reset()" mat-button>Reset</button>
+      <button mat-button matStepperPrevious>Wstecz</button>
+      <button (click)="vote()" mat-button>Oddaj głos</button>
     </div>
   </mat-step>
 

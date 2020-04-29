@@ -1,0 +1,11 @@
+.gitignore
+.git/
+
+docker-compose.yml
+
+.gradle
+gradlew.bat
+
+.idea
+js
+build

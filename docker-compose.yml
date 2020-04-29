@@ -1,0 +1,19 @@
+version: '3.7'
+
+services:
+
+  elections-server:
+    container_name: elections-server
+    image: elections-server:dev
+    build: .
+    ports:
+      - "8080:8080"
+      - "5005:5005"
+
+  elections:
+    build:
+      context: src/js/elections
+    container_name: elections
+    image: elections:dev
+    ports:
+      - "80:80"

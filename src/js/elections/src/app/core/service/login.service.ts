@@ -4,6 +4,7 @@ import { LoginData } from '../model/login-data';
 import { map } from 'rxjs/operators';
 import { LoginHttpService } from '../http/login-http.service';
 import { AuthService } from './auth.service';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,8 @@ export class LoginService {
   currentUser$: Observable<LoginData> = this.currentUserSub.asObservable();
 
   constructor(private loginHttpService: LoginHttpService,
-              private authService: AuthService) {
+              private authService: AuthService,
+              private router: Router) {
   }
 
   login(loginData: LoginData): void {
@@ -32,6 +34,7 @@ export class LoginService {
   logout(): void {
     this.currentUserSub.next(null);
     this.authService.clearToken();
+    this.router.navigate(['']);
   }
 
   isLogin$(): Observable<boolean> {

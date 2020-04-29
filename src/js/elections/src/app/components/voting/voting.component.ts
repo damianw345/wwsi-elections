@@ -24,7 +24,7 @@ export class VotingComponent implements OnInit {
   electionAreaFormGroup: FormGroup;
   candidateFormGroup: FormGroup;
 
-  private electionAreas: ElectionArea[];
+  electionAreas: ElectionArea[];
   displayedColumns: string[] = ['id', 'electionArea', 'committee', 'candidate', 'party'];
   dataSource = new MatTableDataSource<Candidate>(null);
 
@@ -85,7 +85,10 @@ export class VotingComponent implements OnInit {
       electionAreaId: this.getChosenElectionAreaId(),
       authMethodId: 4, // epuap
     }).subscribe(response => {
-      this.modalFacadeService.openMessageDialog(response);
+      this.modalFacadeService.openMessageDialog(response)
+        .afterClosed()
+        .toPromise()
+        .then(_ => this.stepper.next())
     });
   }
 

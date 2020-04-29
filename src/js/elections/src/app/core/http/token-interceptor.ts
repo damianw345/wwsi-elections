@@ -11,12 +11,14 @@ import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
+import { ModalFacadeService } from '../service/modal-facade.service';
 
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
 
   constructor(private auth: AuthService,
-              private router: Router) {
+              private router: Router,
+              private  modalFacadeService: ModalFacadeService) {
   }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
@@ -38,9 +40,10 @@ export class TokenInterceptor implements HttpInterceptor {
           }
         }, (err: any) => {
           if (err instanceof HttpErrorResponse) {
-            if (err.status === 401) {
+            if (err.status >= 400) {
               this.auth.clearToken();
               this.router.navigate(['']);
+              this.modalFacadeService.openMessageDialog('Nastąpił błąd aplikacji. Zostałeś wylogowany');
             }
           }
         })

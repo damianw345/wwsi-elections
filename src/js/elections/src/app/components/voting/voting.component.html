@@ -84,7 +84,7 @@
   </mat-step>
 
   <mat-step>
-    <ng-template matStepLabel>Podsumowanie</ng-template>
+    <ng-template matStepLabel>Potwierdzenie</ng-template>
     <ng-container *ngIf="(candidateFormGroup.valueChanges | async) as candidateValue">
       <p>Czy na pewno chcesz oddać głos na {{candidateValue.candidateName}} ?</p>
     </ng-container>
@@ -94,5 +94,12 @@
       <button (click)="vote()" mat-button>Oddaj głos</button>
     </div>
   </mat-step>
+
+  <mat-step>
+    <ng-template matStepLabel>Podsumowanie</ng-template>
+    <p>Dziękujemy za udział w wyborach!</p>
+    <p>Możesz teraz się wylogować</p>
+  </mat-step>
+
 
 </mat-horizontal-stepper>

@@ -53,6 +53,7 @@ export class VotingComponent implements OnInit {
     this.buildFormGroups();
   }
 
+  // fixme I was really short on time while writing this demo project...
   registerToOnlineVotingInArea() {
     const electionAreaId = this.getChosenElectionAreaId();
     this.registerToOnlineVotingHttpService.register(electionAreaId)

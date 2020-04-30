@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: elections-server
+  labels:
+    app: elections-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: elections-server
+  template:
+    metadata:
+      labels:
+        app: elections-server
+    spec:
+      containers:
+        - name: elections-server
+          image: gcr.io/wwsi-elections/elections-server:latest
+          #          envFrom:
+          #            - configMapRef:
+          #                name: elections-server-config
+          ports:
+            - containerPort: 8080
+            - containerPort: 5005
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: elections-server
+  labels:
+    run: elections-server
+spec:
+  #  type: NodePort
+  type: LoadBalancer
+  ports:
+    - name: "app"
+      port: 8080
+      targetPort: 8080
+    - name: "debug"
+      port: 5005
+      targetPort: 5005
+  selector:
+    app: elections-server
+

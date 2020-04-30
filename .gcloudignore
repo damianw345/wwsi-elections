@@ -1,0 +1,12 @@
+.gradle/
+gradlew.bat
+.idea
+build/
+k8s/
+
+.gitignore
+.git/
+
+docker-compose.yml
+
+js/

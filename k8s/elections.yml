@@ -28,6 +28,9 @@ metadata:
     run: elections
 spec:
   type: LoadBalancer
+  # obtained by
+  # gcloud compute addresses create elections-ip --region europe-west3
+  loadBalancerIP: "35.246.251.101"
   ports:
     - name: "app"
       port: 80

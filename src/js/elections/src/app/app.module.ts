@@ -22,6 +22,10 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
 import { MatInputModule } from '@angular/material/input';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { SummaryStepComponent } from './components/voting/steps/summary-step/summary-step.component';
+import { ConfirmationStepComponent } from './components/voting/steps/confirmation-step/confirmation-step.component';
+import { CandidateChooseStepComponent } from './components/voting/steps/candidate-choose-step/candidate-choose-step.component';
+import { ElectionAreaStepComponent } from './components/voting/steps/election-area-step/election-area-step.component';
 
 
 @NgModule({
@@ -31,6 +35,10 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     VotingComponent,
     MessageDialogComponent,
     NavbarComponent,
+    SummaryStepComponent,
+    ConfirmationStepComponent,
+    CandidateChooseStepComponent,
+    ElectionAreaStepComponent,
   ],
   imports: [
     BrowserModule,

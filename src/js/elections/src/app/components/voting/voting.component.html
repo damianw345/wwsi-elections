@@ -1,105 +1,32 @@
 <mat-horizontal-stepper #stepper [linear]="true">
 
-  <mat-step [stepControl]="electionAreaFormGroup">
-    <form [formGroup]="electionAreaFormGroup">
-      <ng-template matStepLabel>Rejestracja w okręgu wyborczym</ng-template>
-
-      <div class="row">
-        <div class="col">
-          <i>Wskazówka: w przypadku wyborów prezydenckich wybierz okręg Polska</i>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col">
-          <mat-form-field>
-            <mat-select formControlName="electionArea" placeholder="Okręg wyborczy">
-              <mat-option *ngFor="let electionArea of electionAreas"
-                          [value]="electionArea">{{electionArea.electionArea}}</mat-option>
-            </mat-select>
-          </mat-form-field>
-        </div>
-      </div>
-
-      <div class="row">
-        <button (click)="registerToOnlineVotingInArea()" mat-raised-button>Zarejestruj i przejdź dalej</button>
-      </div>
-
-    </form>
+  <mat-step [stepControl]="electionAreaService.electionAreaFormGroup">
+    <ng-template matStepLabel>Rejestracja w okręgu wyborczym</ng-template>
+    <app-election-area-step
+      [stepper]="stepper"
+    ></app-election-area-step>
   </mat-step>
 
-  <mat-step [stepControl]="candidateFormGroup">
+  <mat-step [stepControl]="candidateService.candidateFormGroup">
     <ng-template matStepLabel>Wybór kandydata</ng-template>
-
-    <form [formGroup]="candidateFormGroup">
-
-      <div>
-        <button mat-button matStepperPrevious>Wstecz</button>
-        <button mat-button matStepperNext>Dalej</button>
-      </div>
-
-      <mat-form-field class="table">
-        <table [dataSource]="dataSource" class="mat-elevation-z8" mat-table>
-
-          <ng-container matColumnDef="id">
-            <th *matHeaderCellDef mat-header-cell>Numer</th>
-            <td *matCellDef="let candidate" mat-cell> {{candidate.candidateId}} </td>
-          </ng-container>
-
-          <ng-container matColumnDef="electionArea">
-            <th *matHeaderCellDef mat-header-cell> Obszar wyborczy</th>
-            <td *matCellDef="let candidate" mat-cell> {{candidate.electionArea}} </td>
-          </ng-container>
-
-          <ng-container matColumnDef="committee">
-            <th *matHeaderCellDef mat-header-cell> Komitet</th>
-            <td *matCellDef="let candidate" mat-cell> {{candidate.committeeName}} </td>
-          </ng-container>
-
-          <ng-container matColumnDef="candidate">
-            <th *matHeaderCellDef mat-header-cell> Kandydat</th>
-            <td *matCellDef="let candidate" mat-cell> {{candidate.candidateNameSurname}} </td>
-          </ng-container>
-
-          <ng-container matColumnDef="party">
-            <th *matHeaderCellDef mat-header-cell> Partia</th>
-            <td *matCellDef="let candidate" mat-cell> {{candidate.supportingParty}} </td>
-          </ng-container>
-
-          <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
-          <tr (click)="selection.toggle(row)"
-              (click)="chooseCandidate(row)"
-              (mouseout)="row.hovered = false"
-              (mouseover)="row.hovered = true"
-              *matRowDef="let row; columns: displayedColumns;"
-              [ngClass]="{hovered: row.hovered, highlighted: selection.isSelected(row)}"
-              mat-row>
-          </tr>
-        </table>
-
-        <input formControlName="candidateId" hidden matInput>
-
-      </mat-form-field>
-    </form>
+    <app-candidate-choose-step></app-candidate-choose-step>
   </mat-step>
 
   <mat-step>
     <ng-template matStepLabel>Potwierdzenie</ng-template>
-    <ng-container *ngIf="(candidateFormGroup.valueChanges | async) as candidateValue">
-      <p>Czy na pewno chcesz oddać głos na {{candidateValue.candidateName}} ?</p>
+    <ng-container *ngIf="candidateService.chosenCandidate$ | async as candidate">
+      <app-confirmation-step
+        [candidate]="candidate"
+        [electionAreaId]="electionAreaService.chosenElectionAreaId"
+        [electionTermId]="electionTermService.currentElectionTermId"
+        [stepper]="stepper"
+      ></app-confirmation-step>
     </ng-container>
-
-    <div>
-      <button mat-button matStepperPrevious>Wstecz</button>
-      <button (click)="vote()" mat-button>Oddaj głos</button>
-    </div>
   </mat-step>
 
   <mat-step>
     <ng-template matStepLabel>Podsumowanie</ng-template>
-    <p>Dziękujemy za udział w wyborach!</p>
-    <p>Możesz teraz się wylogować</p>
+    <app-summary-step></app-summary-step>
   </mat-step>
-
 
 </mat-horizontal-stepper>

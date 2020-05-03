@@ -1,0 +1,24 @@
+<form [formGroup]="electionAreaService.electionAreaFormGroup">
+
+  <div class="row">
+    <div class="col">
+      <i>Wskazówka: w przypadku wyborów prezydenckich wybierz okręg Polska</i>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <mat-form-field>
+        <mat-select formControlName="electionArea" placeholder="Okręg wyborczy">
+          <mat-option *ngFor="let electionArea of electionAreaService.electionAreas"
+                      [value]="electionArea">{{electionArea.electionArea}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="row">
+    <button (click)="registerToOnlineVotingInArea()" mat-raised-button>Zarejestruj i przejdź dalej</button>
+  </div>
+
+</form>

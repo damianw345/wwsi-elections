@@ -25,8 +25,12 @@ export class CandidateService {
     this.allCandidates.next(candidates);
   }
 
-  chooseCandidate(candidate: Candidate) {
+  pushChosenCandidate(candidate: Candidate) {
     this.chosenCandidateSubject.next(candidate);
+  }
+
+  chooseCandidate(candidate: Candidate) {
+    this.pushChosenCandidate(candidate);
     this.candidateFormGroup.patchValue({candidateId: candidate.candidateId})
     this.candidateFormGroup.patchValue({candidateName: candidate.candidateNameSurname})
   }

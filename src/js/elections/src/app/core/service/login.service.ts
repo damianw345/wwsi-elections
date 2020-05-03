@@ -5,6 +5,7 @@ import { map } from 'rxjs/operators';
 import { LoginHttpService } from '../http/login-http.service';
 import { AuthService } from './auth.service';
 import { Router } from '@angular/router';
+import { CandidateService } from '../../components/voting/service/candidate.service';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +17,7 @@ export class LoginService {
 
   constructor(private loginHttpService: LoginHttpService,
               private authService: AuthService,
+              private candidateService: CandidateService,
               private router: Router) {
   }
 
@@ -34,6 +36,7 @@ export class LoginService {
   logout(): void {
     this.currentUserSub.next(null);
     this.authService.clearToken();
+    this.resetCandidateState();
     this.router.navigate(['']);
   }
 
@@ -41,5 +44,10 @@ export class LoginService {
     return this.currentUser$.pipe(
       map(currentUser => !!currentUser)
     );
+  }
+
+  private resetCandidateState() {
+    this.candidateService.pushChosenCandidate(null);
+    this.candidateService.candidateFormGroup.reset();
   }
 }

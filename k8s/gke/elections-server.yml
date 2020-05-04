@@ -32,7 +32,6 @@ metadata:
   labels:
     run: elections-server
 spec:
-  #  type: NodePort
   type: LoadBalancer
   ports:
     - name: "app"

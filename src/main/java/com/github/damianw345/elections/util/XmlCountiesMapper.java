@@ -11,8 +11,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class XmlCountiesMapper {
 
-    private static JacksonXmlModule xmlModule = new JacksonXmlModule();
-    private static ObjectMapper objectMapper;
+    private static final JacksonXmlModule xmlModule = new JacksonXmlModule();
+    private static final ObjectMapper objectMapper;
 
     static {
         xmlModule.setDefaultUseWrapper(false);

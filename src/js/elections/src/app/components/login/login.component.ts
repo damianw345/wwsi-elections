@@ -3,8 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from '../../core/service/login.service';
 import { LoginData } from '../../core/model/login-data';
-import { catchError, tap } from 'rxjs/operators';
-import { throwError } from 'rxjs';
+import { tap } from 'rxjs/operators';
 import { RegistrationHttpService } from '../../core/http/registration-http.service';
 
 @Component({
@@ -46,11 +45,6 @@ export class LoginComponent implements OnInit {
         .pipe(
           tap(_ => {
             this.login();
-          }),
-          // TODO add error interceptor
-          catchError(err => {
-            console.error(err);
-            return throwError(err);
           })
         )
         .subscribe();

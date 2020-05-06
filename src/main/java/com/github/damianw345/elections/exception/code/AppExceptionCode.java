@@ -9,6 +9,7 @@ public enum AppExceptionCode {
     E001("Incorrect auth token"),
     E002("User already exists"),
     E003("Counties deserialization error"),
+    E004("No ongoing elections"),
     ;
 
     private final String message;

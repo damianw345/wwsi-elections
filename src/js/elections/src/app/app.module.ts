@@ -26,6 +26,7 @@ import { SummaryStepComponent } from './components/voting/steps/summary-step/sum
 import { ConfirmationStepComponent } from './components/voting/steps/confirmation-step/confirmation-step.component';
 import { CandidateChooseStepComponent } from './components/voting/steps/candidate-choose-step/candidate-choose-step.component';
 import { ElectionAreaStepComponent } from './components/voting/steps/election-area-step/election-area-step.component';
+import { ErrorInterceptor } from './core/http/error-interceptor';
 
 
 @NgModule({
@@ -63,6 +64,11 @@ import { ElectionAreaStepComponent } from './components/voting/steps/election-ar
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorInterceptor,
       multi: true
     }
   ],

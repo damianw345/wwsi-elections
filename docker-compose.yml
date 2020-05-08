@@ -8,6 +8,7 @@ services:
     build: .
     ports:
       - "8080:8080"
+      - "8443:8443"
       - "5005:5005"
 
   elections:
@@ -17,3 +18,23 @@ services:
     image: elections:dev
     ports:
       - "80:80"
+      - "443:443"
+    secrets:
+      - source: nginx-config
+        target: /etc/nginx/nginx.conf
+      - source: nginx-crt
+        target: /etc/ssl/certs/nginx-selfsigned.crt
+      - source: nginx-key
+        target: /etc/ssl/private/nginx-selfsigned.key
+      - source: nginx-dh
+        target: /etc/ssl/certs/dhparam.pem
+
+secrets:
+  nginx-config:
+    file: nginx/nginx.conf
+  nginx-crt:
+    file: nginx/nginx-selfsigned.crt
+  nginx-key:
+    file: nginx/nginx-selfsigned.key
+  nginx-dh:
+    file: nginx/dhparam.pem

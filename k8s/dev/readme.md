@@ -6,9 +6,10 @@
 
 # steps to run
 1. `minikube start`
+1. `eval $(minikube docker-env)`
 1. in project's root dir `docker build -t elections-server:dev .`
 1. in src/js/elections `docker build -t elections:dev . `
-1. `eval $(minikube docker-env)`
+1. `kubectl apply -f nginx-config.yml`
 1. `kubectl apply -f elections-server-dev.yml`
 1. `kubectl apply -f elections-dev.yml`
 1. `minikube tunnel`

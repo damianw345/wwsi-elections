@@ -1,0 +1,125 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nginx-config
+  namespace: default
+data:
+  dhparam.pem: |
+    -----BEGIN DH PARAMETERS-----
+    MIIBCAKCAQEAgMmXFWjHiLQgwJAkXnjR2DTv/xNNyjwQmgmkGXwDtra+8ONCGipD
+    pNqyFro0XhFw6YXpa1rKgkqHSFFxieJez0tsKzKTeW+iq32RszRELtT1i6Phgeo9
+    QN2HSkB/2hheRMHFIk50BbCI/VxFXNFgm6dNoOlJaxkaVMczGb1ymCtS3Mq4ohgv
+    hy2+cV4e2DlkbraAfWtcXEzOOgp8vvN0wAD3bhpr4WcBZ7Jdqgv+YC8Y3fh2XSGj
+    JcO766q+jP4IJxgHjnyv7pFWlzJ82ZHIPXMM1DJU3tJgeP4bpKjP+fasw0YsqouI
+    mwXd+HJSy2BQBd6VaFsLMMnZ03LXRaqfSwIBAg==
+    -----END DH PARAMETERS-----
+  nginx-selfsigned.crt: |
+    -----BEGIN CERTIFICATE-----
+    MIIDvzCCAqegAwIBAgIUY+n6arQSqGThR0K6vNMVrGhCYykwDQYJKoZIhvcNAQEL
+    BQAwbzELMAkGA1UEBhMCUEwxEzARBgNVBAgMClNvbWUtU3RhdGUxDzANBgNVBAcM
+    BldhcnNhdzEhMB8GA1UECgwYSW50ZXJuZXQgV2lkZ2l0cyBQdHkgTHRkMRcwFQYD
+    VQQDDA4zNS4yNDYuMjUxLjEwMTAeFw0yMDA1MDQyMDQ4MTNaFw0yMTA1MDQyMDQ4
+    MTNaMG8xCzAJBgNVBAYTAlBMMRMwEQYDVQQIDApTb21lLVN0YXRlMQ8wDQYDVQQH
+    DAZXYXJzYXcxITAfBgNVBAoMGEludGVybmV0IFdpZGdpdHMgUHR5IEx0ZDEXMBUG
+    A1UEAwwOMzUuMjQ2LjI1MS4xMDEwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEK
+    AoIBAQCrvZaUuqOIaqeMq3IM0nOD3eyUJiLNAAW8rvds8D2rxXvqdiHwxQeYmkJ8
+    gBV9HBITahNafF9/A0W5K0H+847vgALSn3dZH3vKXHaaCr6mkIhcHxFCIgTG+48q
+    ulcOeFDOYHxTtfuYiprmOvbBg3K67rzX4XZzbouFaGBydCjUbDD/eXHQMP+xTNRi
+    z2ljNVwtGuuYfsxTFwlHhJb+1cjWtyw4Hj7Y4FoPYk3xUoXMtfvlDZkl1/+dN08Q
+    7wwXf/s0s4b878jCIWnpw7KJ5ATOrNyauAh1GWB0JyK3oA7TeeJeZL6cGIxx25tf
+    jfb2sDFbkIgXVZAPsGAlgQY4izkrAgMBAAGjUzBRMB0GA1UdDgQWBBRX/PFhR+QP
+    WV/Fkevxi6QfWUCGhzAfBgNVHSMEGDAWgBRX/PFhR+QPWV/Fkevxi6QfWUCGhzAP
+    BgNVHRMBAf8EBTADAQH/MA0GCSqGSIb3DQEBCwUAA4IBAQB6ocauOPs+dLfRw52h
+    bH58KTE2s89cEgOpnrFzELoMf5x3zetEEHVw/C4DiRBawDkCJI4hFjB5aU2JN88o
+    QNm9I7ikC2yt0Q1tHE1qHXqKKyEDQwmaK2wady4PeRbczHCDNXMn/uw4+EJejvAP
+    DoKfYMMfFEBqYmwrMcISdgX3/0w2t1NW7T1ODCvrppGS5AtUlZDDaL/vimWbtAmN
+    EiLkaxyvmzS2IF7POGpL1ORch7x5UF1CsHyUGoB6c+yBwuLo4AU1BauHswi6Urg0
+    YS1EppMHU4y+4LTpa5yc2Qv7dv2nzmfGPfLhjqqML8NdeV5rMD/nJZRyG8GjjSkz
+    4Rg4
+    -----END CERTIFICATE-----
+  nginx-selfsigned.key: |
+    -----BEGIN PRIVATE KEY-----
+    MIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCrvZaUuqOIaqeM
+    q3IM0nOD3eyUJiLNAAW8rvds8D2rxXvqdiHwxQeYmkJ8gBV9HBITahNafF9/A0W5
+    K0H+847vgALSn3dZH3vKXHaaCr6mkIhcHxFCIgTG+48qulcOeFDOYHxTtfuYiprm
+    OvbBg3K67rzX4XZzbouFaGBydCjUbDD/eXHQMP+xTNRiz2ljNVwtGuuYfsxTFwlH
+    hJb+1cjWtyw4Hj7Y4FoPYk3xUoXMtfvlDZkl1/+dN08Q7wwXf/s0s4b878jCIWnp
+    w7KJ5ATOrNyauAh1GWB0JyK3oA7TeeJeZL6cGIxx25tfjfb2sDFbkIgXVZAPsGAl
+    gQY4izkrAgMBAAECggEBAJWAvkQM0W1gwyiO2wLUdWC24Ur6g9MHkPb3LUb1QAp3
+    KO8rFVK+gmVS7EvrSEmYFRg3gE+F86/izmBqitIBfk15l3t4/HFmGeJIaaqhbeQb
+    78iZ9vEmIhiCRthATKa5EEcH8VMCGdpp1nxTmhlNb6PRTi10BSRpeCWTflpESoLX
+    myM9KzHyaKgKGZ7MJmdu/5Ci7OC+zvj9UUCq8xoFoC9S2GWntPMYYTGA4mmb/Jq5
+    RCIEUaQsjU6PRleZVisecIYqdZwIgoiE1xDHjgOGTciWdbxD7xol3J2cJ/bBR3V6
+    dJULrOxZPnF+Dz3qTmbfFRxrH8XcJbcqjkFdIXy1unECgYEA0e6LUiPha0zjblAq
+    Mf2usrYYrL6Q8H1MQzepFrjsz6KH5sVET/X2iRXO/6hNkbZu0ARl47OQSo0lcllG
+    Cg862kS9GuIsw0NoC+lyZhBtfCVEghrgpso1C/ty2LiFMHih2mVaUxSxMlHV+h+z
+    hg3zMcsxONTEeffbQst2YfAzGmkCgYEA0W2NySng2bjfApZYmvTNChgbQ49SV5fn
+    NB2K4oQpkgi4q8b8b+YttgZ1Nd9hLHhcL4dkuH//JHPuGqDJKzkOiMqLNdalNwCX
+    YgYDeAyn2NAWGNI++eVY1SGZeIwYuiqkgjmFUy+Iy9LCRysyORU6EOQtzkniwEF7
+    SIKWF23//HMCgYAOvp1kcIa1nZnftpuwFSw++xEymNPfQD2p/u/OW8CuOLEo4TQS
+    FalyKWj3hd+k21ZfH9/0JTl+MvmtVV3Y+QbeK7PIfpg8QrC9HXFef8rgzFFKfg7H
+    SC5/n/KKDDO2mtJrX3D/otVrPlo0DiPyx2oMVkQnxLHkCyeIQngXGuLL+QKBgQCv
+    CYiipEzYzAogSHZ/9LDWifVnjwc8TKqhxTtKPTndY0qtz583C0QTSex2/V9jYqlx
+    1BCbn+comXhdaxsX9BUwwVB+zArEIMtl0y7dDH7Q2IJPdpHKHSUU5YM23KjiGDfs
+    25SSRT1pVZqpDvJoAVTJv1yFeP16wIAAx5wYswhr/wKBgC2q4O21URAKepZ6uCnm
+    wOo3z0424o8fRpXgHJhOrHoL0ynJHYCQkzH3OtsnCUlAJmCTyKK73pmQzRg2+CEe
+    7HyPkHMmlDYnfiE2SEQrnd3Gt2npOPfwvZCMWaVrlrhh6r/VHPXMGPUVY4YgDpIE
+    5hB46Oy57rmejJxkR5/WTJW7
+    -----END PRIVATE KEY-----
+  nginx.conf: |
+    worker_processes  1;
+
+    events {
+        worker_connections 1024;
+    }
+
+    http {
+
+        server {
+
+            ssl_certificate /etc/ssl/certs/nginx-selfsigned.crt;
+            ssl_certificate_key /etc/ssl/private/nginx-selfsigned.key;
+            ssl_dhparam /etc/ssl/certs/dhparam.pem;
+
+            ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+            ssl_prefer_server_ciphers on;
+            ssl_ciphers "EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH";
+            ssl_ecdh_curve secp384r1;
+            ssl_session_cache shared:SSL:10m;
+            ssl_session_tickets off;
+            ssl_stapling on;
+            ssl_stapling_verify on;
+
+            # Disable preloading HSTS for now.  You can use the commented out header line that includes
+            # the "preload" directive if you understand the implications.
+            #add_header Strict-Transport-Security "max-age=63072000; includeSubdomains; preload";
+
+            add_header Strict-Transport-Security "max-age=63072000; includeSubdomains";
+            add_header X-Frame-Options DENY;
+            add_header X-Content-Type-Options nosniff;
+
+            listen 443 ssl http2;
+            listen [::]:443 ssl http2;
+
+            root /usr/share/nginx/html/elections;
+            index index.html index.htm;
+            include /etc/nginx/mime.types;
+
+            gzip on;
+            gzip_min_length 1000;
+            gzip_proxied expired no-cache no-store private auth;
+            gzip_types text/plain text/css application/json application/javascript application/x-javascript text/xml application/xml application/xml+rss text/javascript;
+
+            location / {
+                try_files $uri $uri/ /index.html;
+            }
+            location /api/ {
+                proxy_pass https://elections-server:8443;
+                proxy_http_version 1.1;
+                proxy_set_header Upgrade $http_upgrade;
+                proxy_set_header Connection 'upgrade';
+                proxy_set_header Host $host;
+                proxy_cache_bypass $http_upgrade;
+            }
+        }
+    }

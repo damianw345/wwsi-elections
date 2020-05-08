@@ -19,6 +19,24 @@ spec:
           image: gcr.io/wwsi-elections/elections:latest
           ports:
             - containerPort: 80
+            - containerPort: 443
+          volumeMounts:
+            - name: nginx-config-volume
+              mountPath: /etc/nginx/nginx.conf
+              subPath: nginx.conf
+            - name: nginx-config-volume
+              mountPath: /etc/ssl/certs/nginx-selfsigned.crt
+              subPath: nginx-selfsigned.crt
+            - name: nginx-config-volume
+              mountPath: /etc/ssl/private/nginx-selfsigned.key
+              subPath: nginx-selfsigned.key
+            - name: nginx-config-volume
+              mountPath: /etc/ssl/certs/dhparam.pem
+              subPath: dhparam.pem
+      volumes:
+        - name: "nginx-config-volume"
+          configMap:
+            name: "nginx-config"
 ---
 apiVersion: v1
 kind: Service
@@ -32,8 +50,11 @@ spec:
   # gcloud compute addresses create elections-ip --region europe-west3
   loadBalancerIP: "35.246.251.101"
   ports:
-    - name: "app"
+    - name: "http"
       port: 80
       targetPort: 80
+    - name: "https"
+      port: 443
+      targetPort: 443
   selector:
     app: elections

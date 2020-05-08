@@ -10,8 +10,7 @@ ENV TZ Europe/Warsaw
 RUN ln -s /usr/share/zoneinfo/Europe/Warsaw /etc/localtime ;\
     echo $TZ > /etc/timezone
 
-EXPOSE 80
-COPY nginx.conf /etc/nginx/nginx.conf
+EXPOSE 80 443
 
 WORKDIR /usr/share/nginx/html
 COPY --from=builder /app/dist .

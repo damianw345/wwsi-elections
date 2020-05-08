@@ -20,6 +20,7 @@ spec:
           imagePullPolicy: Never
           ports:
             - containerPort: 8080
+            - containerPort: 8443
             - containerPort: 5005
 ---
 
@@ -32,9 +33,12 @@ metadata:
 spec:
   type: LoadBalancer
   ports:
-    - name: "app"
+    - name: "http"
       port: 8080
       targetPort: 8080
+    - name: "https"
+      port: 8443
+      targetPort: 8443
     - name: "debug"
       port: 5005
       targetPort: 5005

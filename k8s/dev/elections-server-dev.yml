@@ -18,6 +18,9 @@ spec:
         - name: elections-server
           image: elections-server:dev
           imagePullPolicy: Never
+          envFrom:
+            - configMapRef:
+                name: elections-server-config
           ports:
             - containerPort: 8080
             - containerPort: 8443

@@ -17,9 +17,9 @@ spec:
       containers:
         - name: elections-server
           image: gcr.io/wwsi-elections/elections-server:latest
-          #          envFrom:
-          #            - configMapRef:
-          #                name: elections-server-config
+          envFrom:
+            - configMapRef:
+                name: elections-server-config
           ports:
             - containerPort: 8080
             - containerPort: 8443

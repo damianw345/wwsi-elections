@@ -4,7 +4,6 @@ spring:
     url: ${DB_URL}
     username: ${USERNAME}
     password: ${PASSWORD}
-
 logging:
   level:
     org:
@@ -19,7 +18,7 @@ server:
     context-path: /api
   ssl:
     key-store: classpath:keystore.p12
-    key-store-password: aR1Qf5lE4osf5ZHRRD6z
+    key-store-password: ${KEY_STORE_PASSWORD}
     key-store-type: pkcs12
     key-alias: 1
   port: 8443

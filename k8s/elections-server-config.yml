@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: elections-server-config
+  namespace: default
+# set correct values before run
+data:
+  USERNAME: xxx
+  PASSWORD: xxx
+  KEY_STORE_PASSWORD: xxx
+  DB_URL: xxx
